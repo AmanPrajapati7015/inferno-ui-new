@@ -1,0 +1,56 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  padding: 5px;
+}
+
+
+.videos{
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 500px 200px;
+  gap: 5px;
+}
+
+.vdo-wrap{
+  background-color: black;
+  flex: 1;
+  grid-row-start: 2;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.vdo-wrap.active{
+  grid-column: 1/4;
+  grid-row-start: 1;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+p{
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background-color: white;
+}
+
+.data{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  grid-column: 4/6;
+  grid-row: 1/1;
+}
+
