@@ -1,11 +1,24 @@
 import React, { useEffect, useState,  useRef, act } from 'react';
+import io from 'socket.io-client';
 import './App.css'
+
+const socket = io('http://localhost:3000'); // Adjust this URL if needed
+
 
 
 function App() {
 
+  
+
+
   return (
-    <VideoFeed/>
+    <>
+      <div className="head">
+        <img src="/logo.png" height='60px' alt="" />
+      </div>
+      
+      <VideoFeed/>
+    </>
   )
 }
 
@@ -15,6 +28,25 @@ function App() {
 const VideoFeed = () => {
 
   const [active, setAcitve] = useState(1);
+  const [messages, setMessages] = useState([]);
+
+  
+  useEffect(() => {
+    socket.on('message', (msg) => {
+      setMessages((prevMessages) => {
+        let newArray = [...prevMessages, msg].slice(-5);
+        console.log(newArray);
+        
+        return newArray;
+      }); 
+      
+      
+    });
+
+    return () => {
+      socket.off('message');
+    };
+  }, []);
 
   const videoArray = [
     { id: 1, name:'cam1', imgSrc: 'http://localhost:5000/video_feed/1' },
@@ -46,7 +78,13 @@ const VideoFeed = () => {
       }
 
       <div className="data">
-        placeholder for data
+        {
+          messages.map(msg=>{
+            return (
+              <p>{msg}</p>
+            )
+          })
+        }
       </div>
       
     </div>

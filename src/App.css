@@ -4,7 +4,8 @@
 }
 
 body{
-  padding: 5px;
+  padding: 10px;
+  background-color:   rgb(255, 93, 30);
 }
 
 
@@ -13,7 +14,7 @@ body{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 500px 200px;
-  gap: 5px;
+  gap: 15px;
 }
 
 .vdo-wrap{
@@ -21,6 +22,8 @@ body{
   flex: 1;
   grid-row-start: 2;
   width: 100%;
+  border : 3px solid white;
+  border-radius: 5px;
   height: 100%;
   position: relative;
 }
@@ -30,13 +33,13 @@ body{
   grid-row-start: 1;
 }
 
-img{
+.videos img{
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-p{
+.vdo-wrap p{
   position: absolute;
   top: 1px;
   left: 1px;
@@ -47,10 +50,21 @@ p{
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+  background-color: rgb(255, 255, 255);
   grid-column: 4/6;
   grid-row: 1/1;
 }
 
+.logo {
+  text-align: center;
+}
+
+
+
+
+.head{
+  margin: 5px 0;
+}
