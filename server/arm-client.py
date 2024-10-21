@@ -7,10 +7,8 @@ sio = socketio.Client()
 @sio.event
 def connect():
     print('Connected to the server')
-    sio.send('Hello from Python!')
+    sio.emit('arm-connection', 'arm client connected')
 
-def send_data():
-    print("HA")
     
 
 # Event handler for disconnection
@@ -24,7 +22,7 @@ sio.connect('http://localhost:3000')
 # Wait for the connection to be established before sending more messages
 i = 1
 while True:
-    sio.send(str(i))
+    sio.emit('arm-client', str(i))
     i+=1
     time.sleep(1) # import time
 

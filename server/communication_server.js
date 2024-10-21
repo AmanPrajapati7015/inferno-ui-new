@@ -8,24 +8,31 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: '*',                // Allow all origins
-        methods: ['GET', 'POST'],   // Specify allowed methods
-        credentials: true           // If you need to allow credentials (optional)
+        origin: '*',                
+        methods: ['GET', 'POST'],  
+        credentials: true          
     }
 });
 
-// app.use(cors());
+
 
 
 io.on('connection', (socket) => {
 
+    socket.on('drive-connection', (msg)=>console.log(msg));
+    socket.on('arm-connection', (msg)=>console.log(msg));
+    socket.on('front-end-connection', (msg)=>console.log(msg));
 
-    console.log('A client connected');
 
-    // Listen for a message from the client
-    socket.on('message', (msg) => {
-        console.log('Message received:', msg);
-        io.send(msg);
+
+    socket.on('drive-client', (msg) => {
+        console.log('drive-client :', msg);
+        io.emit('drive-client', msg);
+    });
+
+    socket.on('arm-client', (msg) => {
+        console.log('arm-client :', msg);
+        io.emit('arm-client', msg);
     });
 
     // Handle disconnection
