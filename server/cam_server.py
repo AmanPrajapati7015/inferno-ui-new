@@ -28,8 +28,7 @@ def generate_frames(rtsp_url):
                 print("Failed to capture frame. Releasing camera.")
                 break
 
-            # Optional: Display the video feed locally (not needed for streaming)
-            cv2.imshow('Video Feed', frame)
+           
 
             # Encode the frame in JPEG format
             ret, buffer = cv2.imencode('.jpg', frame)

@@ -58,6 +58,7 @@ body{
   background-color: rgb(255, 255, 255);
   grid-column: 4/5;
   grid-row: 1/1;
+  border-radius: 10px;
 }
 
 
@@ -70,5 +71,23 @@ body{
 }
 
 .head{
-  margin: 5px 0;
+  margin: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.head button.kill-switch{
+  padding: 7px 20px;
+  font-size: 1.2rem;
+  background-color: black;
+  border :2px solid black;
+  color: red;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+button.kill-switch:hover{
+  background-color: red;
+  color: black;
 }

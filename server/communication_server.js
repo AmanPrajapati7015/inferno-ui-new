@@ -33,6 +33,11 @@ io.on('connection', (socket) => {
         io.emit('arm-client', msg);
     });
 
+    socket.on('kill', (msg)=>{
+        console.log('Kill process started');
+        io.emit('kill', msg);
+    })
+
     // Handle disconnection
     socket.on('disconnect', () => {
         console.log('Client disconnected');

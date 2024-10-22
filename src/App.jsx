@@ -3,15 +3,23 @@ import io from 'socket.io-client';
 import './App.css'
 
 
+const cam_server = 'http://localhost:5000/' ;
+const socket = io('http://localhost:3000') ;  
 
 
 function App() {
+
+  function handleKill(){
+    socket.emit('kill', "hehe");
+  }
   
   return (
     <>
       <div className="head">
         <img src="/logo.png" height='60px' alt="" />
+        <button className='kill-switch' onClick={handleKill}>KILL</button>
       </div>
+
 
       <VideoFeed />
     </>
@@ -24,8 +32,7 @@ function App() {
 const VideoFeed = () => {
   
   const [active, setAcitve] = useState(1);
-  
-  const cam_server = 'http://localhost:5000/'
+
   const videoArray = [
     { id: 1, name: 'cam1', imgSrc: cam_server+'video_feed/1' },
     { id: 2, name: 'cam2', imgSrc: cam_server+'video_feed/2' },
@@ -54,17 +61,16 @@ const VideoFeed = () => {
         )
       })
     }
-      {/* <DriveDiv/> */}
-      {/* <ArmDiv/> */}
+      <DriveDiv socket={socket}/>
+      <ArmDiv socket={socket}/>
     </div>
   );
 };
 
 
-const socket = io('http://localhost:3000'); // Adjust this URL if needed
 
 
-function DriveDiv() {
+function DriveDiv({socket}) {
   const [messages, setMessages] = useState([]);
 
 
@@ -98,7 +104,7 @@ function DriveDiv() {
 }
 
 
-function ArmDiv() {
+function ArmDiv({socket}) {
   const [messages, setMessages] = useState([]);
 
 
