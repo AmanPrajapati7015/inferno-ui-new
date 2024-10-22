@@ -25,14 +25,14 @@ const VideoFeed = () => {
   
   const [active, setAcitve] = useState(1);
   
-  
+  const cam_server = 'http://localhost:5000/'
   const videoArray = [
-    { id: 1, name: 'cam1', imgSrc: 'http://localhost:5000/video_feed/1' },
-    { id: 2, name: 'cam2', imgSrc: 'http://localhost:5000/video_feed/2' },
-    { id: 3, name: 'cam3', imgSrc: 'http://localhost:5000/video_feed/3' },
-    { id: 4, name: 'cam4', imgSrc: 'http://localhost:5000/video_feed/4' },
-    { id: 5, name: 'cam5', imgSrc: 'http://localhost:5000/video_feed/4' },
-    { id: 6, name: 'cam6', imgSrc: 'http://localhost:5000/video_feed/4' },
+    { id: 1, name: 'cam1', imgSrc: cam_server+'video_feed/1' },
+    { id: 2, name: 'cam2', imgSrc: cam_server+'video_feed/2' },
+    { id: 3, name: 'cam3', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
+    { id: 4, name: 'cam4', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
+    { id: 5, name: 'cam5', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
+    { id: 6, name: 'cam6', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
   ];
   
   return (
@@ -54,8 +54,8 @@ const VideoFeed = () => {
         )
       })
     }
-      <DriveDiv/>
-      <ArmDiv/>
+      {/* <DriveDiv/> */}
+      {/* <ArmDiv/> */}
     </div>
   );
 };

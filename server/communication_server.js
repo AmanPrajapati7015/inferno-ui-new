@@ -23,8 +23,6 @@ io.on('connection', (socket) => {
     socket.on('arm-connection', (msg)=>console.log(msg));
     socket.on('front-end-connection', (msg)=>console.log(msg));
 
-
-
     socket.on('drive-client', (msg) => {
         console.log('drive-client :', msg);
         io.emit('drive-client', msg);
