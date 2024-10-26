@@ -3,14 +3,21 @@ import io from 'socket.io-client';
 import './App.css'
 
 
-const cam_server = 'http://localhost:5000/' ;
+const usb_cam_server = 'http://192.168.1.56:5000/' ;
+const ip_cam_server = 'http://localhost:3001/' ;
+
 const socket = io('http://localhost:3000') ;  
 
+
+socket.on('new-connection' ,(client)=>{
+  let msg = `new ${client} connected to server`;
+  alert(msg);
+})
 
 function App() {
 
   function handleKill(){
-    socket.emit('kill', "hehe");
+    socket.emit('kill', "t");
   }
   
   return (
@@ -34,9 +41,9 @@ const VideoFeed = () => {
   const [active, setAcitve] = useState(1);
 
   const videoArray = [
-    { id: 1, name: 'cam1', imgSrc: cam_server+'video_feed/1' },
-    { id: 2, name: 'cam2', imgSrc: cam_server+'video_feed/2' },
-    { id: 3, name: 'cam3', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
+    { id: 1, name: 'cam1', imgSrc: usb_cam_server+'video_feed/1' },
+    { id: 2, name: 'cam2', imgSrc: usb_cam_server+'video_feed/2' },
+    { id: 3, name: 'cam3', imgSrc: ip_cam_server+'video_feed/3' },
     { id: 4, name: 'cam4', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
     { id: 5, name: 'cam5', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
     { id: 6, name: 'cam6', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
@@ -75,7 +82,7 @@ function DriveDiv({socket}) {
 
 
   useEffect(() => {
-    socket.emit('front-end-connection', 'front-end client connected');
+    socket.emit('new-connection', 'front-end-client');
 
     socket.on('drive-client', (msg) => {
       setMessages((prevMessages) => {

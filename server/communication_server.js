@@ -19,9 +19,11 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
 
-    socket.on('drive-connection', (msg)=>console.log(msg));
-    socket.on('arm-connection', (msg)=>console.log(msg));
-    socket.on('front-end-connection', (msg)=>console.log(msg));
+    socket.on('new-connection', (client)=>{
+        console.log(`new ${client} connected to server`)
+        io.emit('new-connection', client);
+    })
+
 
     socket.on('drive-client', (msg) => {
         console.log('drive-client :', msg);

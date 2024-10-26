@@ -7,7 +7,7 @@ sio = socketio.Client()
 @sio.event
 def connect():
     print('Connected to the server')
-    sio.emit('drive-connection', 'drive client connected')
+    sio.emit('new-connection', 'drive-clinet')
 
     
 

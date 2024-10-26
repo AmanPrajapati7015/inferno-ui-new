@@ -1,7 +1,7 @@
 import cv2
 
 # Open the default camera (usually the first USB camera, index 0)
-cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
+cap = cv2.VideoCapture('rtsp://admin:ABCdef123@192.168.1.64:554/cam/realmonitor?channel=1&subtype=0')
 
 if not cap.isOpened():
     print("Error: Could not open video device")

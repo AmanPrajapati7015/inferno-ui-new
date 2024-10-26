@@ -7,7 +7,7 @@ sio = socketio.Client()
 @sio.event
 def connect():
     print('Connected to the server')
-    sio.emit('arm-connection', 'arm client connected')
+    sio.emit('new-connection', 'arm-client')
 
     
 
@@ -26,4 +26,4 @@ while True:
     i+=1
     time.sleep(1) # import time
 
-sio.wait()
+
