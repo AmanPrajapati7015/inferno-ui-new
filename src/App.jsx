@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, act } from 'react';
 import io from 'socket.io-client';
 import './App.css'
+import infernoLogo from '/inferno.jpg'
 
 
 const usb_cam_server = 'http://192.168.1.56:5000/' ;
@@ -44,9 +45,9 @@ const VideoFeed = () => {
     { id: 1, name: 'cam1', imgSrc: usb_cam_server+'video_feed/1' },
     { id: 2, name: 'cam2', imgSrc: usb_cam_server+'video_feed/2' },
     { id: 3, name: 'cam3', imgSrc: ip_cam_server+'video_feed/3' },
-    { id: 4, name: 'cam4', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
-    { id: 5, name: 'cam5', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
-    { id: 6, name: 'cam6', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s' },
+    { id: 4, name: 'cam4', imgSrc: infernoLogo },
+    { id: 5, name: 'cam5', imgSrc: infernoLogo },
+    { id: 6, name: 'cam6', imgSrc: infernoLogo },
   ];
   
   return (
